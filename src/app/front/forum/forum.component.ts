@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {PostsService} from "../../Services/posts.service";
-import {Post} from "./post";
+import {Post} from "../../Models/post";
+import {FormControl} from "@angular/forms";
+import {ReactsService} from "../../Services/reacts.service";
+import {ReactionTypeModel} from "../../Models/reactionType.model";
+import {Reaction} from "../../Models/react.model";
 
 @Component({
   selector: 'app-forum',
@@ -8,17 +12,47 @@ import {Post} from "./post";
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent implements OnInit{
+  reaction!: Reaction;
 
+  firstname= new FormControl();
+  lastname = new FormControl();
+  username = new FormControl();
+  email = new FormControl();
+  password= new FormControl();
   posts: any[] | undefined
   newPost :Post=new Post(0,'',new Date(),false,false,null);
+  constructor(private postservice:PostsService, private reactService: ReactsService) {
 
-  constructor(private postservice:PostsService) {
   }
+
+
 
   ngOnInit(): void {
+    console.log(this.reaction)
     this.getAllPosts()
+    this.addReact()
+    this.CreateReaction()
+    console.log("done")
   }
+  addReact(){
+  }
+  CreateReaction(){
+    return new Reaction(
+      1,
+      ReactionTypeModel.Like,
+      1
+    )
+    console.log("created!")
 
+  }
+  createReaction(reaction: ReactionTypeModel, idUser: number, idPost: number): void{
+    this.reaction.reactionType = reaction
+    this.reactService.assignReactionToPost(this.reaction, idUser, idPost).subscribe(
+      ()=>{
+        console.log("done")
+      }
+    )
+  }
   getAllPosts():any{
     this.postservice.getposts().subscribe((Posts: any[]) => {
       this.posts = Posts})
