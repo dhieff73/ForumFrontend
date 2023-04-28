@@ -1,0 +1,17 @@
+<app-user-navbar></app-user-navbar>
+<app-forum-header></app-forum-header>
+<div>
+  <form>
+    <label>Content</label>
+    <input [(ngModel)]="newPost.content" name="content" required>
+    <button (click)="createPost()">Create Post</button>
+  </form>
+</div>
+<div *ngFor="let post of posts">
+  <p>{{post.datePost}}</p>
+  <h2>{{post.content}}</h2>
+  <button (click)="deletPost(post.idPost)">delete</button>
+</div>
+
+
+<app-footer-front></app-footer-front>
