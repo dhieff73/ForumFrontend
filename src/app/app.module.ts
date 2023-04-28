@@ -62,6 +62,11 @@ import { LoginComponent } from './Login/login/login.component';
 import { HttpClientModule} from "@angular/common/http";
 import { ForumComponent } from './front/forum/forum.component';
 import { ForumHeaderComponent } from './front/forum/forum-header/forum-header.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -119,18 +124,23 @@ import { ForumHeaderComponent } from './front/forum/forum-header/forum-header.co
     ForumComponent,
     ForumHeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GalleriaModule,
-    RatingModule,
-    FormsModule,
-    DialogModule,
-    ButtonModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        GalleriaModule,
+        RatingModule,
+        FormsModule,
+        DialogModule,
+        ButtonModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        HttpClientModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatMenuModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
