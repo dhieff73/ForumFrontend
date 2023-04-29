@@ -37,12 +37,7 @@ export class ForumComponent implements OnInit{
   addReact(){
   }
   CreateReaction(){
-    return new Reaction(
-      1,
-      ReactionTypeModel.Like,
-      1
-    )
-    console.log("created!")
+
 
   }
   createReaction(reaction: ReactionTypeModel, idUser: number, idPost: number): void{
